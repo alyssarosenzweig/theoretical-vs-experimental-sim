@@ -20,6 +20,10 @@ Experiment.prototype.experimentalProbability = function() {
 	return this.sum / this.iterations;
 }
 
+Experiment.prototype.deviance = function() {
+	return (this.expected() - this.experimentalProbability()) / this.expected();
+}
+
 Experiment.prototype.iterateRun = function(numIterations) {
 	while(numIterations--) {
 		this.iterate();
