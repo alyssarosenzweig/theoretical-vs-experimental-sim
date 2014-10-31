@@ -1,5 +1,6 @@
 function Experiment() {
-
+	this.iterations = 0;
+	this.sum = 0;
 }
 
 Experiment.prototype.run = function() {
@@ -10,11 +11,19 @@ Experiment.prototype.expected = function() {
 	return 1;
 }
 
+Experiment.prototype.iterate = function() {
+	this.sum += this.run();
+	this.iterations++;
+}
+
+Experiment.prototype.experimentalProbability = function() {
+	return this.sum / this.iterations;
+}
+
 Experiment.prototype.iterateRun = function(numIterations) {
-	var sum = 0;
-	for(var i = 0; i < numIterations; ++i) {
-		sum += this.run();
+	while(numIterations--) {
+		this.iterate();
 	}
 
-	return sum / numIterations;
+	return this.experimentalProbability();
 }
