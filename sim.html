@@ -1,0 +1,16 @@
+<h1> Theoretical vs Experimental Probability Simulator </h1>
+
+<script src="Experiment.js"></script>
+
+<script>
+var e = new Experiment;
+e.run = function() { return (Math.random() > 0.5) ? 1 : 0 }
+e.expected = function() { return 0.5; }
+
+setInterval(function() {
+	e.iterate();
+	document.getElementById("deviance").innerHTML = e.deviance();
+}, 10);
+</script>
+
+Deviance: <span id="deviance">0</span>
