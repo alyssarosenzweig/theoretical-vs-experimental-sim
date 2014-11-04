@@ -32,6 +32,6 @@ Experiment.prototype.iterateRun = function(numIterations) {
 	return this.experimentalProbability();
 }
 
-if(process) {
+if(window["process"]) {
 	module.exports = Experiment;
 }
