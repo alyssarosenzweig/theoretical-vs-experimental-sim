@@ -7,6 +7,7 @@
 var e = new Experiment;
 e.run = function() { return (Math.random() > 0.5) ? 1 : 0 }
 e.expected = function() { return 0.5; }
+e.trials = 1000;
 
 var deviance, devianceData;
 
@@ -28,18 +29,14 @@ window.onload = function() {
 		document.getElementById("deviance").getContext('2d')
 		).Line(devianceData);
 
-	var ceveryN = 50;
-	var everyN = ceveryN;
-	var nTime = 30;
+	var nTime = 40;
 
-
-	setInterval(function() {
+	var b = setInterval(function() {
 		e.iterateRun(nTime);
-		everyN--;
-		if(!everyN) {
-			everyN = ceveryN;
-			deviance.addData([e.deviance()], e.iterations);
-			deviance.update();
+		deviance.addData([e.deviance()], e.iterations);
+		deviance.update();
+		if(e.isDone()) {
+			clearInterval(b);
 		}
 		//document.getElementById("deviance").innerHTML = e.deviance();
 	}, 10);
@@ -47,4 +44,4 @@ window.onload = function() {
 
 </script>
 
-Deviance: <canvas id="deviance" width="400" height="400"></canvas>
+<h2>Deviance:</h2> <br/> <canvas id="deviance" width="400" height="400"></canvas>

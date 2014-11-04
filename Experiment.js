@@ -1,6 +1,7 @@
 function Experiment() {
 	this.iterations = 0;
 	this.sum = 0;
+	this.trials = 1000;
 }
 
 Experiment.prototype.run = function() {
@@ -9,6 +10,9 @@ Experiment.prototype.run = function() {
 
 Experiment.prototype.expected = function() {
 	return 1;
+}
+Experiment.prototype.isDone = function() {
+	return this.iterations >= this.trials;
 }
 
 Experiment.prototype.iterate = function() {
