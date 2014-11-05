@@ -9,6 +9,8 @@ e.run = function() { return (Math.random() > 0.5) ? 1 : 0 }
 e.expected = function() { return 0.5; }
 e.trials = 1000;
 
+var IDEAL_WIDTH = 25;
+
 var deviance, devianceData;
 
 window.onload = function() {
@@ -29,7 +31,7 @@ window.onload = function() {
 		document.getElementById("deviance").getContext('2d')
 		).Line(devianceData);
 
-	var nTime = 40;
+	var nTime = e.trials / IDEAL_WIDTH;
 
 	var b = setInterval(function() {
 		e.iterateRun(nTime);
