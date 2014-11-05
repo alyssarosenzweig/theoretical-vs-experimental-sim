@@ -11,10 +11,10 @@ e.trials = 1000;
 
 var IDEAL_WIDTH = 25;
 
-var deviance, devianceData;
-
 window.onload = function() {
-	devianceData = {
+	var deviance = new Chart(
+		document.getElementById("deviance").getContext('2d')
+	).Line({
 		labels: [0, 0],
 		datasets: [{
 			fillColor: "rgba(220,220,220,0.2)",
@@ -25,22 +25,15 @@ window.onload = function() {
             pointHighlightStroke: "rgba(220,220,220,1)",
             data: [0, 0]
 		}]
-	}
-
-	deviance = new Chart(
-		document.getElementById("deviance").getContext('2d')
-		).Line(devianceData);
-
-	var nTime = e.trials / IDEAL_WIDTH;
+	});
 
 	var b = setInterval(function() {
-		e.iterateRun(nTime);
+		e.iterateRun(e.trials / IDEAL_WIDTH);
 		deviance.addData([e.deviance()], e.iterations);
 		deviance.update();
 		if(e.isDone()) {
 			clearInterval(b);
 		}
-		//document.getElementById("deviance").innerHTML = e.deviance();
 	}, 10);
 }
 
