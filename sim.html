@@ -7,7 +7,7 @@
 var e = new Experiment;
 e.run = function() { return (Math.random() > 0.5) ? 1 : 0 }
 e.expected = function() { return 0.5; }
-e.trials = 1000;
+e.trials = 10000;
 
 var IDEAL_WIDTH = 25;
 
@@ -28,7 +28,7 @@ window.onload = function() {
 	});
 
 	var b = setInterval(function() {
-		e.iterateRun(e.trials / IDEAL_WIDTH);
+		e.iterateRun(Math.round(e.trials / IDEAL_WIDTH));
 		deviance.addData([e.deviance()], e.iterations);
 		deviance.update();
 		if(e.isDone()) {
