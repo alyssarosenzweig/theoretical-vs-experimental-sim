@@ -12,6 +12,16 @@ Theoretical.prototype.calculate = function() {
 	return this.prob;
 }
 
+Theoretical.prototype.addGeneric = function(comp) {
+	this.comps.push(comp);
+}
+
+Theoretical.prototype.addSimple = function(options) {
+	var comp = new Component();
+	comp.options = options;
+	this.addGeneric(comp);
+}
+
 function Component() {
 	this.options = 1;	
 }
