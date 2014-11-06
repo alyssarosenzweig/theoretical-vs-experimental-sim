@@ -1,7 +1,8 @@
-function Experiment() {
+function Experiment(theoretical) {
 	this.iterations = 0;
 	this.sum = 0;
 	this.trials = 1000;
+	this.theoretical = theoretical;
 }
 
 Experiment.prototype.run = function() {
@@ -9,7 +10,7 @@ Experiment.prototype.run = function() {
 }
 
 Experiment.prototype.expected = function() {
-	return 1;
+	return this.theoretical.calculate();
 }
 Experiment.prototype.isDone = function() {
 	return this.iterations >= this.trials;
