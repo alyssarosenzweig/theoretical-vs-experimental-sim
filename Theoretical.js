@@ -19,3 +19,8 @@ function Component() {
 Component.prototype.probability = function() {
 	return 1 / this.options;
 }
+
+if(typeof module !== 'undefined') {
+	module.exports.Theoretical = Theoretical;
+	module.exports.Component = Component;
+}
