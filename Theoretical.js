@@ -3,7 +3,13 @@ function Theoretical() {
 }
 
 Theoretical.prototype.calculate = function() {
+	this.prob = 1;
 
+	for(var i = 0; i < this.comps.length; ++i) {
+		this.prob *= this.comps[i].probability();
+	}
+
+	return this.prob;
 }
 
 function Component() {
