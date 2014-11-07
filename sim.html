@@ -28,14 +28,11 @@ window.onload = function() {
 		}]
 	});
 
-	var b = setInterval(function() {
+	while(!e.isDone()) {
 		e.iterateRun(Math.round(e.trials / IDEAL_WIDTH));
 		deviance.addData([e.deviance()], e.iterations);
 		deviance.update();
-		if(e.isDone()) {
-			clearInterval(b);
-		}
-	}, 10);
+	}
 }
 
 </script>
