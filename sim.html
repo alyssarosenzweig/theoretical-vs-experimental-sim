@@ -22,10 +22,14 @@ window.onload = function() {
 		devianceData.push(e.deviance());
 	}
 
-	var deviance = new Chart(
-		document.getElementById("deviance").getContext('2d')
+	graph('deviance', devianceLabels, devianceData);
+}
+
+function graph(id, labels, data) {
+	new Chart(
+		document.getElementById(id).getContext('2d')
 	).Line({
-		labels: devianceLabels,
+		labels: labels,
 		datasets: [{
 			fillColor: "rgba(220,220,220,0.2)",
             strokeColor: "rgba(220,220,220,1)",
@@ -33,11 +37,9 @@ window.onload = function() {
             pointStrokeColor: "#fff",
             pointHighlightFill: "#fff",
             pointHighlightStroke: "rgba(220,220,220,1)",
-            data: devianceData
+            data: data
 		}]
 	});
-
-
 }
 
 </script>
