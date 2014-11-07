@@ -26,12 +26,17 @@ function run() {
 		devianceData.push(e.deviance());
 	}
 
+	document.getElementById('theoretical').innerHTML = e.expected();
+	document.getElementById('experimental').innerHTML = e.experimentalProbability();
+	document.getElementById('deviance').innerHTML = e.deviance();
+
+
 	graph('deviance', devianceLabels, devianceData);
 }
 
 function graph(id, labels, data) {
 	new Chart(
-		document.getElementById(id).getContext('2d')
+		document.getElementById(id+"Graph").getContext('2d')
 	).Line({
 		labels: labels,
 		datasets: [{
@@ -48,4 +53,7 @@ function graph(id, labels, data) {
 
 </script>
 
-<h2>Deviance:</h2> <br/> <canvas id="deviance" width="400" height="400"></canvas>
+<h2>Theoretical Probability: <span id="theoretical">0</span></h2>
+<h2>Experimental Probability: <span id="experimental">0</span></h2>
+<h2>Deviance: <span id="deviance">0</span></h2>
+<h2>Deviance over time:</h2> <br/> <canvas id="devianceGraph" width="400" height="400"></canvas>

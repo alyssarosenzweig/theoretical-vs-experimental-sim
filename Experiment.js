@@ -18,6 +18,7 @@ Experiment.prototype.run = function() {
 Experiment.prototype.expected = function() {
 	return this.theoretical.calculate();
 }
+
 Experiment.prototype.isDone = function() {
 	return this.iterations >= this.trials;
 }
