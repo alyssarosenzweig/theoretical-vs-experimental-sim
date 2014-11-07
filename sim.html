@@ -5,18 +5,18 @@
 <script src="Chart.min.js"></script>
 
 <script>
-var t = new Theoretical();
-t.addSimple(6);
+var theoretical = new Theoretical();
+theoretical.addSimple(6);
 
-var e = new Experiment(t, 1000000);
+var experimental = new Experiment(theoretical, 1000000);
 
 var IDEAL_WIDTH = 25;
 
 window.onload = function() {
-	run();
+	run(experimental);
 }
 
-function run() {
+function run(e) {
 	var devianceLabels = [];
 	var devianceData = [];
 	var experimentalLabels = [];
