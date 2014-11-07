@@ -19,11 +19,17 @@ window.onload = function() {
 function run() {
 	var devianceLabels = [];
 	var devianceData = [];
+	var experimentalLabels = [];
+	var experimentalData = [];
 
 	while(!e.isDone()) {
 		e.iterateRun(Math.round(e.trials / IDEAL_WIDTH));
+
 		devianceLabels.push(e.iterations);
 		devianceData.push(e.deviance());
+
+		experimentalLabels.push(e.iterations);
+		experimentalData.push(e.experimentalProbability());
 	}
 
 	document.getElementById('theoretical').innerHTML = e.expected();
@@ -32,6 +38,7 @@ function run() {
 
 
 	graph('deviance', devianceLabels, devianceData);
+	graph('experimental', experimentalLabels, experimentalData);
 }
 
 function graph(id, labels, data) {
@@ -56,4 +63,5 @@ function graph(id, labels, data) {
 <h2>Theoretical Probability: <span id="theoretical">0</span></h2>
 <h2>Experimental Probability: <span id="experimental">0</span></h2>
 <h2>Deviance: <span id="deviance">0</span></h2>
+<h2>Experimental Probability over time:</h2> <br/> <canvas id="experimentalGraph" width="400" height="400"></canvas>
 <h2>Deviance over time:</h2> <br/> <canvas id="devianceGraph" width="400" height="400"></canvas>
