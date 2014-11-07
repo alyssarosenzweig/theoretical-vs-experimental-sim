@@ -8,8 +8,7 @@
 var t = new Theoretical();
 t.addSimple(6);
 
-var e = new Experiment(t);
-e.trials = 100000;
+var e = new Experiment(t, 100000);
 
 console.log(e.expected());
 

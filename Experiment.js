@@ -1,7 +1,7 @@
-function Experiment(theoretical) {
+function Experiment(theoretical, trials) {
 	this.iterations = 0;
 	this.sum = 0;
-	this.trials = 1000;
+	this.trials = trials;
 	this.theoretical = theoretical;
 }
 
