@@ -30,6 +30,10 @@ Component.prototype.probability = function() {
 	return 1 / this.options;
 }
 
+Component.prototype.run = function() {
+	return (Math.random() < this.probability());
+}
+
 if(typeof module !== 'undefined') {
 	module.exports.Theoretical = Theoretical;
 	module.exports.Component = Component;
