@@ -26,7 +26,7 @@ Experiment.prototype.experimentalProbability = function() {
 }
 
 Experiment.prototype.deviance = function() {
-	return (this.expected() - this.experimentalProbability()) / this.expected();
+	return (this.expected() - this.experimentalProbability());
 }
 
 Experiment.prototype.iterateRun = function(numIterations) {

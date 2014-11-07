@@ -9,8 +9,10 @@ var t = new Theoretical();
 t.addSimple(6);
 
 var e = new Experiment(t);
-e.run = function() { return (Math.random() > 0.5) ? 1 : 0 }
+e.run = function() { return (Math.random() < 0.166) ? 1 : 0 }
 e.trials = 100000;
+
+console.log(e.expected());
 
 var IDEAL_WIDTH = 25;
 
