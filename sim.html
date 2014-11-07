@@ -13,10 +13,19 @@ var e = new Experiment(t, 100000);
 var IDEAL_WIDTH = 25;
 
 window.onload = function() {
+	var devianceLabels = [];
+	var devianceData = [];
+
+	while(!e.isDone()) {
+		e.iterateRun(Math.round(e.trials / IDEAL_WIDTH));
+		devianceLabels.push(e.iterations);
+		devianceData.push(e.deviance());
+	}
+
 	var deviance = new Chart(
 		document.getElementById("deviance").getContext('2d')
 	).Line({
-		labels: [0, 0],
+		labels: devianceLabels,
 		datasets: [{
 			fillColor: "rgba(220,220,220,0.2)",
             strokeColor: "rgba(220,220,220,1)",
@@ -24,15 +33,11 @@ window.onload = function() {
             pointStrokeColor: "#fff",
             pointHighlightFill: "#fff",
             pointHighlightStroke: "rgba(220,220,220,1)",
-            data: [0, 0]
+            data: devianceData
 		}]
 	});
 
-	while(!e.isDone()) {
-		e.iterateRun(Math.round(e.trials / IDEAL_WIDTH));
-		deviance.addData([e.deviance()], e.iterations);
-		deviance.update();
-	}
+
 }
 
 </script>
