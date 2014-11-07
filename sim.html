@@ -5,9 +5,11 @@
 <script src="Chart.min.js"></script>
 
 <script>
-var e = new Experiment;
+var t = new Theoretical();
+t.addSimple(6);
+
+var e = new Experiment(t);
 e.run = function() { return (Math.random() > 0.5) ? 1 : 0 }
-e.expected = function() { return 0.5; }
 e.trials = 100000;
 
 var IDEAL_WIDTH = 25;
