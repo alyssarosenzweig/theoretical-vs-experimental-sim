@@ -6,7 +6,13 @@ function Experiment(theoretical) {
 }
 
 Experiment.prototype.run = function() {
-	return 1;
+	var result = true;
+
+	for(var i = 0; i < this.theoretical.comps.length; ++i) {
+		result &= this.theoretical.comps[i].run()	
+	}
+
+	return result ? 1 : 0;
 }
 
 Experiment.prototype.expected = function() {
