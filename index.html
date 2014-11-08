@@ -27,7 +27,7 @@ function addComponentGUI(id, complex) {
 	document.getElementById('components').innerHTML +=
 		 "<div id=\"component"+id+"\">"+
 			(complex ? "Code: " : "Options: ") +
-			(complex ? "<input/>. Theoretical: <input/>. " : "<input/>") +
+			(complex ? "<textarea></textarea>. Theoretical: <textarea></textarea>. " : "<input/>") +
 		"</div>";
 }
 
