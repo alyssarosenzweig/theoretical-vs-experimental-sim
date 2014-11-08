@@ -5,12 +5,18 @@
 <script src="Chart.min.js"></script>
 
 <script>
+var components = [];
 var theoretical = new Theoretical();
 theoretical.addSimple(6);
 
 var experimental = new Experiment(theoretical, 1000000);
 
 var IDEAL_WIDTH = 25;
+
+function addComponent(complex) {
+	var comp = {};
+	components.push(components);
+}
 
 function start() {
 	run(experimental);
