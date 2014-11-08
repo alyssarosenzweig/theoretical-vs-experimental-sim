@@ -39,6 +39,7 @@ function start() {
 
 		if(componentGUI[comp.id].complex) {
 			comp.run = eval('function(){'+document.getElementById('component'+(comp.id)).children[0].value+'}');
+			comp.probability = eval('function(){'+document.getElementById('component'+(comp.id)).children[1].value+'}');
 		} else {
 			comp.options = document.getElementById('component'+(comp.id)).children[0].value;
 		}
