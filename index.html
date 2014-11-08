@@ -39,6 +39,8 @@ function run(e) {
 
 	graph('deviance', devianceLabels, devianceData);
 	graph('experimental', experimentalLabels, experimentalData);
+
+	document.getElementById('results').style.display = 'block';
 }
 
 function graph(id, labels, data) {
@@ -61,7 +63,7 @@ function graph(id, labels, data) {
 </script>
 <h1>Simulation Paramaters:</h1>
 <input type="submit" onclick="start()" value="Run!"/>
-<div id="results">
+<div id="results" style="display: none">
 	<h1>Info:</h1>
 	<h2>Theoretical Probability: <span id="theoretical">0</span></h2>
 	<h2>Experimental Probability: <span id="experimental">0</span></h2>
