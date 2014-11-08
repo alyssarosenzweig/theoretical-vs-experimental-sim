@@ -6,11 +6,8 @@
 
 <script>
 var components = [];
-var theoretical = new Theoretical();
-theoretical.addSimple(6);
 
-var experimental = new Experiment(theoretical, 1000000);
-
+var TRIALS = 1000000;
 var IDEAL_WIDTH = 25;
 
 function addComponent(complex) {
@@ -19,7 +16,9 @@ function addComponent(complex) {
 }
 
 function start() {
-	run(experimental);
+	var theoretical = new Theoretical();
+
+	run(new Experiment(theoretical, TRIALS));
 }
 
 function run(e) {
