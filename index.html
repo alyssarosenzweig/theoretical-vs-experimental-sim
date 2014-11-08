@@ -38,8 +38,12 @@ function start() {
 		var comp = components[i];
 
 		if(componentGUI[comp.id].complex) {
-			comp.run = eval('function(){'+document.getElementById('component'+(comp.id)).children[0].value+'}');
-			comp.probability = eval('function(){'+document.getElementById('component'+(comp.id)).children[1].value+'}');
+			var guiComp = document.getElementById('component' + comp.id);
+			var code1 = '(function(){'+(guiComp.children[0].value)+'})';
+			var code2 = '(function(){'+(guiComp.children[1].value)+'})';
+
+			comp.run = eval(code1);
+			comp.probability = eval(code2);
 		} else {
 			comp.options = document.getElementById('component'+(comp.id)).children[0].value;
 		}
