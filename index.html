@@ -25,13 +25,26 @@ function addComponent(complex) {
 
 function addComponentGUI(id, complex) {
 	document.getElementById('components').innerHTML +=
-	 "<div id=\"component"+id+"\">"+
-		(complex ? "Code: " : "Options: ")+
-	"<input/></div>"
+		 "<div id=\"component"+id+"\">"+
+			(complex ? "Code: " : "Options: ")+
+			(complex ? "<input/>. Theoretical: <input/>. " ? "<input/>") +
+		"</div>";
 }
 
 function start() {
 	var theoretical = new Theoretical();
+
+	for(var i = 0; i < components.length; ++i) {
+		var comp = components[i];
+
+		if(componentGUI[comp.id].complex) {
+			comp.run = eval('function(){'+document.getElementById('component'+(comp.id)).children[0].value+'}');
+		} else {
+			comp.options = document.getElementById('component'+(comp.id)).children[0].value;
+		}
+
+		theoretical.addGeneric(components[i]);
+	}
 
 	run(new Experiment(theoretical, TRIALS));
 }
