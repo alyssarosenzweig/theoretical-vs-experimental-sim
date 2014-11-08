@@ -5,16 +5,22 @@
 <script src="Chart.min.js"></script>
 
 <script>
-var components = [], componentIdCounter = 0;
+var components = [], componentIdCounter = 0, componentGUI = {};
 
 var TRIALS = 1000000;
 var IDEAL_WIDTH = 25;
 
 function addComponent(complex) {
 	var comp = new Component();
+	comp.id = componentIdCounter++;
 	components.push(comp);
 
-	addComponentGUI(componentIdCounter++, complex);
+	addComponentGUI(comp.id, complex);
+
+	componentGUI[comp.id] = {
+		comp: comp,
+		complex: complex
+	};
 }
 
 function addComponentGUI(id, complex) {
