@@ -3,6 +3,7 @@
 <script src="Experiment.js"></script>
 <script src="Theoretical.js"></script>
 <script src="Chart.min.js"></script>
+<script src="tofract.js"></script>
 
 <script>
 var components = [], componentIdCounter = 0, componentGUI = {};
@@ -71,7 +72,7 @@ function run(e) {
 	}
 
 	document.getElementById('theoretical').innerHTML = e.expected();
-	document.getElementById('experimental').innerHTML = e.experimentalProbability();
+	document.getElementById('experimental').innerHTML = e.experimentalProbability() + "(" + toFrac(e.experimentalProbability()) + ")";
 	document.getElementById('deviance').innerHTML = e.deviance();
 
 
