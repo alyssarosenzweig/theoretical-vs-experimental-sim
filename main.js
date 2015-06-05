@@ -17,11 +17,31 @@ function addComponent(complex) {
 }
 
 function addComponentGUI(id, complex) {
-	document.getElementById('components').innerHTML +=
-		 "<div id=\"component"+id+"\">"+
-			(complex ? "Code: " : "Options: ") +
-			(complex ? "<textarea>return Math.random() > 0.5</textarea>. Theoretical: <textarea>return 0.5</textarea>. " : "<input/>") +
-		"</div>";
+    var component = document.createElement("div");
+    component.id = "component" + id;
+
+    component.appendChild(
+            document.createTextNode(
+                complex ? "Code: " : "Options: "
+            )
+        );
+
+    if(complex) {
+        var exTextarea = document.createElement("textarea");
+        exTextarea.innerHTML = "return Math.random() > 0.5";
+
+        var thTextarea = document.createElement("textarea");
+        thTextarea.innerHTML = "return 0.5";
+
+        component.appendChild(exTextarea);
+        
+        component.appendChild(document.createTextNode("Theoretical: "));
+        component.appendChild(thTextarea);
+    } else {
+        component.appendChild(document.createElement("input"));
+    }
+
+	document.getElementById('components').appendChild(component);
 }
 
 function start() {
